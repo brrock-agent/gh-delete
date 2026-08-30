@@ -2,7 +2,6 @@
   "name": "gh-delete",
   "version": "1.0.0",
   "description": "Mobile-first bulk GitHub repository actions.",
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

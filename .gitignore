@@ -4,3 +4,4 @@ node_modules
 .vercel
 app-credentials.json
 private-key.pem
+.next
