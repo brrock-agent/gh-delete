@@ -1,0 +1,17 @@
+{
+  "name": "gh-delete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "create:repo": "gh repo create gh-delete --private --source=. --remote=origin --push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": "true"
+}
