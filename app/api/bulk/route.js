@@ -13,7 +13,8 @@ export async function POST(request) {
   if (request.headers.get('x-csrf-token') !== s.csrf) return NextResponse.json({ error:'Invalid request token.' }, { status:403 });
   try {
     const { action, repos = [], target, confirmation } = await request.json();
-    if (!['pin','unpin','unpinAll','delete','transfer'].includes(action)) throw Error('Unknown action.');
+    if (['pin','unpin','unpinAll'].includes(action)) throw Error('GitHub does not expose repository pin or unpin operations through its supported API.');
+    if (!['delete','transfer'].includes(action)) throw Error('Unknown action.');
     if (action === 'delete' && confirmation !== 'DELETE') throw Error('Type DELETE to confirm permanent deletion.');
     if (action === 'transfer' && !/^[\w.-]+$/.test(target || '')) throw Error('Enter the destination account or organization for transfer.');
     let list = repos.map(name => ({ name }));
