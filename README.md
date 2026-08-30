@@ -2,14 +2,19 @@
 
 A mobile-first bulk GitHub repository console. Sign in with GitHub, then pin, unpin, transfer, or permanently delete up to 50 owned repositories in a batch.
 
-## Create the GitHub OAuth app
+## Create the GitHub App
 
-GitHub does not expose OAuth-app registration through `gh`; it must be created once in the GitHub UI:
+The GitHub App Manifest flow needs one GitHub browser approval, then `gh` converts the returned one-time code into credentials.
 
-1. Open <https://github.com/settings/developers> → **New OAuth App**.
-2. Set Homepage URL to `http://localhost:3000` and callback URL to `http://localhost:3000/auth/callback` (replace both with your deployed URL in production).
-3. Copy its client ID and generate a client secret.
-4. Copy `.env.example` to `.env`, add the values, then load it into your shell:
+1. Open <https://gh-delete.vercel.app/github-app.html> and approve the manifest on GitHub.
+2. After GitHub redirects back, copy the code displayed and run:
+
+```bash
+scripts/convert-github-app.sh CODE
+```
+
+3. Add the resulting `client_id` and `client_secret` from `app-credentials.json` to Vercel as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`; set `APP_URL` to `https://gh-delete.vercel.app`.
+4. For local development, copy `.env.example` to `.env`, add the values, then load it into your shell:
 
 ```bash
 set -a; source .env; set +a

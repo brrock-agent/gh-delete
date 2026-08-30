@@ -1,0 +1,13 @@
+{
+  "name": "gh-delete",
+  "description": "Mobile-first bulk repository cleanup, transfer, and pinning.",
+  "url": "https://gh-delete.vercel.app",
+  "redirect_url": "https://gh-delete.vercel.app/github-app.html",
+  "public": false,
+  "request_oauth_on_install": true,
+  "default_permissions": {
+    "administration": "write",
+    "metadata": "read"
+  },
+  "default_events": []
+}
